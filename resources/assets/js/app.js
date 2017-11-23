@@ -35,20 +35,71 @@ const store = new Vuex.Store({
 			register : false
 		},
 		settings : {
-			menuAnimationTimer : 500
+			menuAnimationTimer : 300
 		}
 	},
 
 	mutations : {
 
+		HIDE_ALL(state){
+			state.show.dashboard = false;
+			state.show.forgot = false;
+			state.show.intro = false;
+			state.show.news = false;
+			state.show.login = false;
+			state.show.register = false;
+		},
+		SHOW_INTRO(state){
+			state.show.intro = true;
+		},
+		SHOW_NEWS(state){
+			state.show.news = true;
+		},
+		START_LOADING(state){
+			state.isLoading = true;
+		},
+		STOP_LOADING(state){
+			state.isLoading = false;
+		}
+
 	},
 
 	actions: {
 
+		hideAll(context){
+			context.commit('HIDE_ALL');
+		},
+		showIntro(context){
+			context.commit('SHOW_INTRO');
+		},
+		showNews(context){
+			context.commit('SHOW_NEWS');
+		},
+		startLoading(context){
+			context.commit('START_LOADING');
+		},
+		stopLoading(context){
+			context.commit('STOP_LOADING');
+		}
 	},
 
 	getters : {
 
+		isLoading : state => {
+			return state.isLoading;
+		},
+
+		menuAnimationTimer : state => {
+			return state.settings.menuAnimationTimer;
+		},
+
+		showIntro : state => {
+			return state.show.intro;
+		},
+
+		showNews : state => {
+			return state.show.news;
+		}
 	}
 });
 

@@ -1,10 +1,10 @@
 <template>
-    <div class="intro-main">
+    <div class="news-main">
     	<transition name="fade">
-	    	<div v-if="showIntro" class="pof-content-wrapper content-wrapper flex-full">
+	    	<div v-if="showNews" class="pof-content-wrapper content-wrapper flex-full">
 	    		<div class="pof-mask"></div>
 	    		<div class="pof-content">
-		    		<div class="pof-header text"> Lorem Ipsum Dolyak Zhaitan</div>
+		    		<div class="pof-header text">News</div>
 		    		<div class="pof-text text text-center"> Lorem Ipsum Dolyak Zhaitan</div>
 		    	</div>
 	    	</div>
@@ -22,9 +22,9 @@
     			return this.$store.getters.isLoading;
     		},
 
-    		showIntro : function(){
-    			return this.$store.getters.showIntro;
-    		}
+            showNews : function (){
+                return this.$store.getters.showNews;
+            }
     	},
 
         mounted() {

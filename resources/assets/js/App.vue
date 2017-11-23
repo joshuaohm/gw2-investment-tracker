@@ -15,8 +15,27 @@
     export default {
 
         components : { navBar, index, foot },
+
+        computed : {
+
+            isLoading(){
+                return this.$store.getters.isLoading;
+            }
+        },
+
         mounted() {
             console.log('App mounted.')
+
+            var self = this;
+
+            if(self.isLoading){
+
+                setTimeout(function(){
+                    self.$store.dispatch('stopLoading');
+                    self.$store.dispatch('showIntro');
+                },100, self);
+                
+            }
         }
     }
 </script>

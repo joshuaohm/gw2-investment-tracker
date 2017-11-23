@@ -8359,16 +8359,39 @@ button.close {
 }
 
 .pof-mask {
-  position: relative;
+  position: absolute;
   width: 100%;
-  width: 100%;
+  height: 100%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.pof-text {
-  color: #ffecb6;
+.pof-content {
+  position: relative;
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding-top: 16px;
+  padding-bottom: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.pof-content .pof-text {
+  position: relative;
+  z-index: 2;
+  color: #ffecb6;
+  font-size: 16px;
+}
+
+.pof-content .pof-header {
+  position: relative;
+  z-index: 2;
+  color: #ff6d10;
+  text-align: center;
+  font-size: 26px;
+  width: 100%;
+  margin-bottom: 16px;
 }
 
 .nav-main {
@@ -8469,31 +8492,31 @@ button.close {
   min-height: 200px;
 }
 
-.index-main .fade-enter-active,
-.index-main .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
 
-.index-main .fade-enter {
+.fade-enter {
   opacity: 0;
   display: none;
   -webkit-transform: translateX(-50px);
           transform: translateX(-50px);
 }
 
-.index-main .fade-enter-to {
+.fade-enter-to {
   opacity: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.index-main .fade-leave {
+.fade-leave {
   opacity: 1;
 }
 
-.index-main .fade-leave-to {
+.fade-leave-to {
   opacity: 0;
   -webkit-transform: translateX(50px);
           transform: translateX(50px);
@@ -8506,6 +8529,18 @@ body {
 
 .text {
   font-family: 'Vollkorn SC', serif;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .flex-full {

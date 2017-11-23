@@ -22,6 +22,18 @@ body{
 	font-family: 'Vollkorn SC', serif;
 }
 
+.text-center {
+	text-align: center;
+}
+
+.text-left{
+	text-align: left;
+}
+
+.text-right{
+	text-align: right;
+}
+
 .flex-full{
 	display: flex;
 	width: calc(100% * (10 / 12));

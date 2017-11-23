@@ -1006,15 +1006,69 @@ var store = new Vuex.Store({
 			register: false
 		},
 		settings: {
-			menuAnimationTimer: 500
+			menuAnimationTimer: 300
 		}
 	},
 
-	mutations: {},
+	mutations: {
+		HIDE_ALL: function HIDE_ALL(state) {
+			state.show.dashboard = false;
+			state.show.forgot = false;
+			state.show.intro = false;
+			state.show.news = false;
+			state.show.login = false;
+			state.show.register = false;
+		},
+		SHOW_INTRO: function SHOW_INTRO(state) {
+			state.show.intro = true;
+		},
+		SHOW_NEWS: function SHOW_NEWS(state) {
+			state.show.news = true;
+		},
+		START_LOADING: function START_LOADING(state) {
+			state.isLoading = true;
+		},
+		STOP_LOADING: function STOP_LOADING(state) {
+			state.isLoading = false;
+		}
+	},
 
-	actions: {},
+	actions: {
+		hideAll: function hideAll(context) {
+			context.commit('HIDE_ALL');
+		},
+		showIntro: function showIntro(context) {
+			context.commit('SHOW_INTRO');
+		},
+		showNews: function showNews(context) {
+			context.commit('SHOW_NEWS');
+		},
+		startLoading: function startLoading(context) {
+			context.commit('START_LOADING');
+		},
+		stopLoading: function stopLoading(context) {
+			context.commit('STOP_LOADING');
+		}
+	},
 
-	getters: {}
+	getters: {
+
+		isLoading: function isLoading(state) {
+			return state.isLoading;
+		},
+
+		menuAnimationTimer: function menuAnimationTimer(state) {
+			return state.settings.menuAnimationTimer;
+		},
+
+		showIntro: function showIntro(state) {
+			return state.show.intro;
+		},
+
+		showNews: function showNews(state) {
+			return state.show.news;
+		}
+	}
 });
 
 var app = new Vue({
@@ -43837,8 +43891,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     components: { navBar: __WEBPACK_IMPORTED_MODULE_0__components_NavBar_vue___default.a, index: __WEBPACK_IMPORTED_MODULE_1__components_Index_Index_vue___default.a, foot: __WEBPACK_IMPORTED_MODULE_2__components_Footer_vue___default.a },
+
+    computed: {
+        isLoading: function isLoading() {
+            return this.$store.getters.isLoading;
+        }
+    },
+
     mounted: function mounted() {
         console.log('App mounted.');
+
+        var self = this;
+
+        if (self.isLoading) {
+
+            setTimeout(function () {
+                self.$store.dispatch('stopLoading');
+                self.$store.dispatch('showIntro');
+            }, 100, self);
+        }
     }
 });
 
@@ -43940,6 +44011,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
+    computed: {
+
+        showNews: function showNews() {
+            return this.$store.getters.showNews;
+        },
+
+        menuAnimationTimer: function menuAnimationTimer() {
+            return this.$store.getters.menuAnimationTimer;
+        }
+
+    },
+
+    methods: {
+
+        newsClick: function newsClick() {
+            var self = this;
+
+            if (!self.showNews) {
+
+                self.$store.dispatch('hideAll');
+
+                setTimeout(function () {
+
+                    self.$store.dispatch('showNews');
+                }, self.menuAnimationTimer, self);
+            }
+        }
+    },
+
     mounted: function mounted() {
         console.log('Nav mounted.');
     }
@@ -43953,27 +44054,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
+  return _c("div", { staticClass: "nav-main" }, [
+    _vm._m(0, false, false),
+    _vm._v(" "),
+    _c("div", { staticClass: "nav-items" }, [
+      _c("div", { staticClass: "item text" }, [_vm._v(" DASHBOARD ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "item text", on: { click: _vm.newsClick } }, [
+        _vm._v(" NEWS ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "item text" }, [_vm._v(" LOGIN ")])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "nav-main" }, [
-      _c("div", { staticClass: "logo text" }, [
-        _vm._v("\n        Guild Wars 2"),
-        _c("br"),
-        _vm._v("\n        Investment Tracker\n    ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "nav-items" }, [
-        _c("div", { staticClass: "item text" }, [_vm._v(" DASHBOARD ")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "item text" }, [_vm._v(" NEWS ")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "item text" }, [_vm._v(" LOGIN ")])
-      ])
+    return _c("div", { staticClass: "logo text" }, [
+      _vm._v("\n        Guild Wars 2"),
+      _c("br"),
+      _vm._v("\n        Investment Tracker\n    ")
     ])
   }
 ]
@@ -44139,6 +44242,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Register_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Register_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Forgot_vue__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Forgot_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Forgot_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__News_News_vue__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__News_News_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__News_News_vue__);
 //
 //
 //
@@ -44150,6 +44255,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
@@ -44159,7 +44266,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    components: { intro: __WEBPACK_IMPORTED_MODULE_0__Intro_vue___default.a, loginForm: __WEBPACK_IMPORTED_MODULE_1__Login_vue___default.a, registerForm: __WEBPACK_IMPORTED_MODULE_2__Register_vue___default.a, forgotForm: __WEBPACK_IMPORTED_MODULE_3__Forgot_vue___default.a },
+    components: { intro: __WEBPACK_IMPORTED_MODULE_0__Intro_vue___default.a, loginForm: __WEBPACK_IMPORTED_MODULE_1__Login_vue___default.a, registerForm: __WEBPACK_IMPORTED_MODULE_2__Register_vue___default.a, forgotForm: __WEBPACK_IMPORTED_MODULE_3__Forgot_vue___default.a, news: __WEBPACK_IMPORTED_MODULE_4__News_News_vue___default.a },
+
+    computed: {
+
+        isLoading: function isLoading() {
+            return this.$store.isLoading;
+        }
+    },
 
     mounted: function mounted() {
         console.log('Index mounted.');
@@ -44184,7 +44298,9 @@ var render = function() {
       _vm._v(" "),
       _c("registerForm"),
       _vm._v(" "),
-      _c("forgotForm")
+      _c("forgotForm"),
+      _vm._v(" "),
+      _c("news")
     ],
     1
   )
@@ -44263,12 +44379,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Intro mounted.');
-    }
+
+	computed: {
+
+		isLoading: function isLoading() {
+			return this.$store.getters.isLoading;
+		},
+
+		showIntro: function showIntro() {
+			return this.$store.getters.showIntro;
+		}
+	},
+
+	mounted: function mounted() {
+		console.log('Intro mounted.');
+	}
 });
 
 /***/ }),
@@ -44284,11 +44416,25 @@ var render = function() {
     { staticClass: "intro-main" },
     [
       _c("transition", { attrs: { name: "fade" } }, [
-        _c(
-          "div",
-          { staticClass: "pof-content-wrapper content-wrapper flex-full" },
-          [_c("div", { staticClass: "pof-mask" })]
-        )
+        _vm.showIntro
+          ? _c(
+              "div",
+              { staticClass: "pof-content-wrapper content-wrapper flex-full" },
+              [
+                _c("div", { staticClass: "pof-mask" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "pof-content" }, [
+                  _c("div", { staticClass: "pof-header text" }, [
+                    _vm._v(" Lorem Ipsum Dolyak Zhaitan")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "pof-text text text-center" }, [
+                    _vm._v(" Lorem Ipsum Dolyak Zhaitan")
+                  ])
+                ])
+              ]
+            )
+          : _vm._e()
       ])
     ],
     1
@@ -44565,6 +44711,141 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-48805204", module.exports)
+  }
+}
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(81)
+/* template */
+var __vue_template__ = __webpack_require__(82)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\News\\News.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8aac4216", Component.options)
+  } else {
+    hotAPI.reload("data-v-8aac4216", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    computed: {
+
+        isLoading: function isLoading() {
+            return this.$store.getters.isLoading;
+        },
+
+        showNews: function showNews() {
+            return this.$store.getters.showNews;
+        }
+    },
+
+    mounted: function mounted() {
+        console.log('Intro mounted.');
+    }
+});
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "news-main" },
+    [
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.showNews
+          ? _c(
+              "div",
+              { staticClass: "pof-content-wrapper content-wrapper flex-full" },
+              [
+                _c("div", { staticClass: "pof-mask" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "pof-content" }, [
+                  _c("div", { staticClass: "pof-header text" }, [
+                    _vm._v("News")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "pof-text text text-center" }, [
+                    _vm._v(" Lorem Ipsum Dolyak Zhaitan")
+                  ])
+                ])
+              ]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8aac4216", module.exports)
   }
 }
 
