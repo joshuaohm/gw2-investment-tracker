@@ -7,3 +7,35 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "pof-content";
+
+@import "_nav";
+@import "_footer";
+@import "_index";
+
+body{
+	background: $main-background-color;
+}
+
+.text{
+	font-family: 'Vollkorn SC', serif;
+}
+
+.flex-full{
+	display: flex;
+	width: calc(100% * (10 / 12));
+	margin: auto;
+}
+
+.flex-half{
+	display: flex;
+	width: calc(50% * (10 / 12));
+	margin: auto;
+}
+
+.flex-fourth{
+	display: flex;
+	width: calc(25% * (10 / 12));
+	margin: auto;
+}
