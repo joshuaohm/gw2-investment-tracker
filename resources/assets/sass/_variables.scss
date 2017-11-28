@@ -7,9 +7,21 @@ $main-background-color: black;
 $pof-font-color-light: #ffecb6;
 $pof-font-color-dark: #ff6d10;
 
+// -- Families
+	$pof-font-1: 'Vollkorn SC', serif;
+	$pof-font-2: 'Barlow Condensed', sans-serif;
+	//$pof-font-2: 'Raleway', serif;
+
 //Colors
 $pof-background-gradient: linear-gradient(-45deg,rgba(135,5,91,.2),transparent 70%),linear-gradient(45deg,rgba(35,2,23,.5) 20%,rgba(79,5,55,.5),rgba(35,2,23,.5) 80%),linear-gradient(50deg,rgba(35,2,23,.8) 10%,rgba(79,5,55,.7),rgba(35,2,23,.8) 90%);
-
+$pof-purple-dark: rgba(35, 2, 23, 1);
+$pof-purple-light: rgba(79, 5, 55, 1);
 
 //Timers
 $menu-animation-timer: 300ms;
+
+//Borders
+.pof-border {
+	border: 2px solid transparent;
+	border-image: url('../img/pof-content-border.png') 2 round;
+}

@@ -1,5 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
+.pof-border,
+.pof-content-wrapper,
+.pof-content .pof-input-wrapper input[type="text"]:focus,
+.pof-content .pof-input-wrapper input[type="email"]:focus,
+.pof-content .pof-input-wrapper input[type="password"]:focus,
+.pof-content .pof-input-wrapper input[type="submit"]:active,
+.pof-content .pof-input-wrapper input[type="submit"]:hover {
+  border: 2px solid transparent;
+  -o-border-image: url(/images/pof-content-border.png?b7cabdeb3498112d8893b91c916c4ab3) 2 round;
+     border-image: url(/images/pof-content-border.png?b7cabdeb3498112d8893b91c916c4ab3) 2 round;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -8353,9 +8365,6 @@ button.close {
 .pof-content-wrapper {
   position: relative;
   background: linear-gradient(-45deg, rgba(135, 5, 91, 0.2), transparent 70%), linear-gradient(45deg, rgba(35, 2, 23, 0.5) 20%, rgba(79, 5, 55, 0.5), rgba(35, 2, 23, 0.5) 80%), linear-gradient(50deg, rgba(35, 2, 23, 0.8) 10%, rgba(79, 5, 55, 0.7), rgba(35, 2, 23, 0.8) 90%);
-  border: 2px solid transparent;
-  -o-border-image: url(/images/pof-content-border.png?b7cabdeb3498112d8893b91c916c4ab3) 2 round;
-     border-image: url(/images/pof-content-border.png?b7cabdeb3498112d8893b91c916c4ab3) 2 round;
 }
 
 .pof-mask {
@@ -8372,7 +8381,7 @@ button.close {
   width: 100%;
   height: 100%;
   padding-top: 16px;
-  padding-bottom: 32px;
+  padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -8382,6 +8391,8 @@ button.close {
   z-index: 2;
   color: #ffecb6;
   font-size: 16px;
+  font-family: "Barlow Condensed", sans-serif;
+  margin-bottom: 16px;
 }
 
 .pof-content .pof-header {
@@ -8392,6 +8403,155 @@ button.close {
   font-size: 26px;
   width: 100%;
   margin-bottom: 16px;
+  font-family: "Vollkorn SC", serif;
+}
+
+.pof-content .pof-error {
+  text-align: center;
+  font-family: "Barlow Condensed", sans-serif;
+  color: #ff6d10;
+  font-size: 14px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 769px) {
+  .pof-content .pof-error {
+    font-size: 10px;
+  }
+}
+
+.pof-content .pof-input-wrapper {
+  margin-bottom: 8px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pof-content .pof-input-wrapper label {
+  display: inline-block;
+  text-align: right;
+  padding-right: 8px;
+  color: #ffecb6;
+  height: 32px;
+  width: 200px;
+  line-height: 32px;
+  margin: 0;
+  -ms-flex-preferred-size: calc(100% / 3);
+      flex-basis: calc(100% / 3);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 769px) {
+  .pof-content .pof-input-wrapper label {
+    font-size: 10px;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    text-align: left;
+  }
+}
+
+.pof-content .pof-input-wrapper input[type="text"],
+.pof-content .pof-input-wrapper input[type="email"],
+.pof-content .pof-input-wrapper input[type="password"] {
+  display: inline-block;
+  background-color: #4f0537;
+  color: #ffecb6;
+  border: 2px inset #230217;
+  width: 100%;
+  height: 32px;
+  padding-left: 4px;
+  padding-right: 4px;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -ms-flex-preferred-size: calc(200% / 3);
+      flex-basis: calc(200% / 3);
+  -webkit-transition: border .3s linear;
+  transition: border .3s linear;
+}
+
+@media screen and (max-width: 769px) {
+  .pof-content .pof-input-wrapper input[type="text"],
+  .pof-content .pof-input-wrapper input[type="email"],
+  .pof-content .pof-input-wrapper input[type="password"] {
+    font-size: 10px;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+}
+
+.pof-content .pof-input-wrapper input[type="submit"] {
+  position: relative;
+  display: block;
+  background-color: #4f0537;
+  border: 2px solid #230217;
+  color: #ffecb6;
+  width: 80px;
+  text-transform: uppercase;
+  left: 100%;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  margin-top: 8px;
+  -webkit-transition: border .3s linear;
+  transition: border .3s linear;
+  -webkit-transition: background-color .3s linear;
+  transition: background-color .3s linear;
+}
+
+@media screen and (max-width: 769px) {
+  .pof-content .pof-input-wrapper input[type="submit"] {
+    margin-top: 16px;
+    left: 0;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.pof-content .pof-input-wrapper input[type="submit"]:active {
+  background-color: #230217;
+  color: #ff6d10;
+}
+
+.pof-content .pof-input-wrapper input[type="submit"]:hover {
+  background-color: #230217;
+}
+
+.pof-content .pof-links {
+  text-decoration: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #ff6d10;
+  font-family: "Vollkorn SC", serif;
+  font-size: 10px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.pof-content .pof-links .pof-link {
+  cursor: pointer;
+  padding: 8px;
+}
+
+.pof-content .pof-links .pof-link:active,
+.pof-content .pof-links .pof-link:hover {
+  color: #ffecb6;
+}
+
+.pof-font-1 {
+  font-family: "Vollkorn SC", serif;
+}
+
+.pof-font-2 {
+  font-family: "Barlow Condensed", sans-serif;
 }
 
 .nav-main {
@@ -8399,8 +8559,8 @@ button.close {
   height: 120px;
   background: linear-gradient(-45deg, rgba(135, 5, 91, 0.2), transparent 70%), linear-gradient(45deg, rgba(35, 2, 23, 0.5) 20%, rgba(79, 5, 55, 0.5), rgba(35, 2, 23, 0.5) 80%), linear-gradient(50deg, rgba(35, 2, 23, 0.8) 10%, rgba(79, 5, 55, 0.7), rgba(35, 2, 23, 0.8) 90%);
   position: relative;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 48px;
+  padding-right: 48px;
 }
 
 @media screen and (max-width: 481px) {
@@ -8460,6 +8620,12 @@ button.close {
   text-align: center;
   line-height: 120px;
   cursor: pointer;
+  text-shadow: 2px 2px #000;
+}
+
+.nav-main .nav-items .item:active,
+.nav-main .nav-items .item:hover {
+  color: #ff6d10;
 }
 
 @media screen and (max-width: 769px) and (min-width: 481px) {
@@ -8489,7 +8655,7 @@ button.close {
 }
 
 .index-main .content-wrapper {
-  min-height: 200px;
+  min-height: 100px;
 }
 
 .fade-enter-active,
@@ -8527,10 +8693,6 @@ body {
   background: black;
 }
 
-.text {
-  font-family: 'Vollkorn SC', serif;
-}
-
 .text-center {
   text-align: center;
 }
@@ -8551,6 +8713,14 @@ body {
   margin: auto;
 }
 
+.flex-three-quarters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc( 75% *  (10 / 12));
+  margin: auto;
+}
+
 .flex-half {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8565,5 +8735,42 @@ body {
   display: flex;
   width: calc(25% * (10 / 12));
   margin: auto;
+}
+
+@media screen and (max-width: 769px) and (min-width: 481px) {
+  .flex-half {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: calc(75% * (10 / 12));
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .flex-half {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: calc(100% * (10 / 12));
+    margin: auto;
+  }
+}
+
+.no-highlight,
+.pof-content .pof-input-wrapper input[type="text"]:focus,
+.pof-content .pof-input-wrapper input[type="email"]:focus,
+.pof-content .pof-input-wrapper input[type="password"]:focus,
+.pof-content .pof-input-wrapper input[type="submit"],
+.nav-main .logo,
+.nav-main .nav-items .item {
+  outline: none !important;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 

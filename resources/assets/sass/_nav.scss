@@ -4,8 +4,8 @@
 	height: 120px;
 	background: $pof-background-gradient;
 	position: relative;
-	padding-left: 32px;
-	padding-right: 32px;
+	padding-left: 48px;
+	padding-right: 48px;
 
 	@media screen and (max-width: 481px){
 		padding-left: 16px;
@@ -21,6 +21,7 @@
 		transform: translateY(-50%);
 		font-size: 20px;
 		cursor: pointer;
+		@extend .no-highlight;
 
 		@media screen and (max-width: 769px) and (min-width: 481px){
 			font-size: 14px;
@@ -51,6 +52,13 @@
 			text-align: center;
 			line-height: 120px;
 			cursor: pointer;
+			text-shadow: 2px 2px #000;
+			@extend .no-highlight;
+
+			&:active, &:hover{
+				color: $pof-font-color-dark;
+			}
+
 
 			@media screen and (max-width: 769px) and (min-width: 481px){
 				font-size: 12px;

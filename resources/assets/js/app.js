@@ -24,7 +24,7 @@ var App = require('./App.vue');
 const store = new Vuex.Store({
 
 	state : {
-		isLogged : false,
+		isLogged : window.isLogged,
 		isLoading : true,
 		show : {
 			dashboard : false,
@@ -49,11 +49,23 @@ const store = new Vuex.Store({
 			state.show.login = false;
 			state.show.register = false;
 		},
+		LOG_OUT(state){
+			state.isLogged = false;
+		},
+		SHOW_DASHBOARD(state){
+			state.show.dashboard = true;
+		},
 		SHOW_INTRO(state){
 			state.show.intro = true;
 		},
+		SHOW_LOGIN(state){
+			state.show.login = true;
+		},
 		SHOW_NEWS(state){
 			state.show.news = true;
+		},
+		SHOW_REGISTER(state){
+			state.show.register = true;
 		},
 		START_LOADING(state){
 			state.isLoading = true;
@@ -69,12 +81,27 @@ const store = new Vuex.Store({
 		hideAll(context){
 			context.commit('HIDE_ALL');
 		},
+		logIn(context){
+			context.commit('LOG_IN');
+		},
+		logOut(context){
+			context.commit('LOG_OUT');
+		},
+		showDashboard(context){
+			context.commit('SHOW_DASHBOARD');
+		},
 		showIntro(context){
 			context.commit('SHOW_INTRO');
+		},
+		showLogin(context){
+			context.commit('SHOW_LOGIN');
 		},
 		showNews(context){
 			context.commit('SHOW_NEWS');
 		},
+		showRegister(context){
+			context.commit('SHOW_REGISTER');
+		},		
 		startLoading(context){
 			context.commit('START_LOADING');
 		},
@@ -89,16 +116,32 @@ const store = new Vuex.Store({
 			return state.isLoading;
 		},
 
+		isLogged : state => {
+			return state.isLogged;
+		},
+
 		menuAnimationTimer : state => {
 			return state.settings.menuAnimationTimer;
+		},
+
+		showDashboard : state => {
+			return state.show.dashboard;
 		},
 
 		showIntro : state => {
 			return state.show.intro;
 		},
 
+		showLogin : state => {
+			return state.show.login;
+		},
+
 		showNews : state => {
 			return state.show.news;
+		},
+
+		showRegister : state => {
+			return state.show.register;
 		}
 	}
 });

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', '\App\Http\Controllers\Controller@index')->name('/');
 
 Auth::routes();
 

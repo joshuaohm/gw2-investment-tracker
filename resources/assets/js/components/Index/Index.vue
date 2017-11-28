@@ -6,6 +6,7 @@
     	<registerForm />
     	<forgotForm />
         <news />
+        <dashboard />
 
     </div>
 </template>
@@ -17,10 +18,11 @@
 	import registerForm from './Register.vue';
 	import forgotForm from './Forgot.vue';
     import news from '../News/News.vue';
+    import dashboard from '../Dashboard/Dashboard.vue';
 
     export default {
 
-    	components : { intro, loginForm, registerForm, forgotForm, news },
+    	components : { intro, loginForm, registerForm, forgotForm, news, dashboard },
 
         computed : {
 

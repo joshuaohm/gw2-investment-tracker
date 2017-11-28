@@ -1,8 +1,7 @@
 .pof-content-wrapper{
 	position: relative;
 	background: $pof-background-gradient;
-	border: 2px solid transparent;
-	border-image: url('../img/pof-content-border.png') 2 round;
+	@extend .pof-border;
 	
 }
 
@@ -20,7 +19,7 @@
 	width: 100%;
 	height: 100%;
 	padding-top: 16px;
-	padding-bottom: 32px;
+	padding-bottom: 8px;
 	padding-left: 16px;
 	padding-right: 16px;
 
@@ -29,6 +28,8 @@
 		z-index: 2;
 		color: $pof-font-color-light;
 		font-size: 16px;
+		font-family: $pof-font-2;
+		margin-bottom: 16px;
 	}
 
 	.pof-header{
@@ -39,6 +40,135 @@
 		font-size: 26px;
 		width: 100%;
 		margin-bottom: 16px;
+		font-family: $pof-font-1;
+	}
+
+	.pof-error{
+		text-align: center;
+		font-family: $pof-font-2;
+		color: $pof-font-color-dark;
+		font-size: 14px;
+		justify-content: space-around;
+		margin-bottom: 16px;
+
+			@media screen and (max-width: 769px){
+				font-size: 10px;
+			}
+	}
+
+	.pof-input-wrapper{
+
+		margin-bottom: 8px;
+		flex-wrap: wrap;
+
+		label {
+			display: inline-block;
+			text-align: right;
+			padding-right: 8px;
+			color: $pof-font-color-light;
+			height: 32px;
+			width: 200px;
+			line-height: 32px;
+			margin: 0;
+			flex-basis: calc(100% / 3);
+			flex-grow: 1;
+			font-size: 12px;
+
+			@media screen and (max-width: 769px){
+				font-size: 10px;
+				flex-basis: 100%;
+				text-align: left;
+			}
+
+		}
+
+		input[type="text"], input[type="email"], input[type="password"] {
+			display: inline-block;
+			background-color: $pof-purple-light;
+			color: $pof-font-color-light;
+			border: 2px inset $pof-purple-dark;
+			width: 100%;
+			height: 32px;
+			padding-left: 4px;
+			padding-right: 4px;
+			flex-grow: 2;
+			flex-basis: calc(200% / 3);
+			transition: border .3s linear;
+
+			@media screen and (max-width: 769px){
+				font-size: 10px;
+				flex-basis: 100%;
+				
+			}
+
+			&:focus{
+				@extend .pof-border;
+				@extend .no-highlight;
+			}
+
+		}
+
+		input[type="submit"]{
+			position: relative;
+			display: block;
+			background-color: $pof-purple-light;
+			border: 2px solid $pof-purple-dark;
+			color: $pof-font-color-light;
+			width: 80px;
+			text-transform: uppercase;
+			left: 100%;
+			transform: translateX(-100%);
+			margin-top: 8px;
+			@extend .no-highlight;
+			transition: border .3s linear;
+			transition: background-color .3s linear;
+
+			@media screen and (max-width: 769px){
+				margin-top: 16px;
+				left: 0;
+				transform: none;
+			}
+		}
+
+		input[type="submit"]:active{
+			background-color: $pof-purple-dark;
+			@extend .pof-border;
+			color: $pof-font-color-dark;
+
+		}
+
+		input[type="submit"]:hover{
+			background-color: $pof-purple-dark;
+			@extend .pof-border;
+		}
+	}
+
+	.pof-links{
+		text-decoration: none;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		color: $pof-font-color-dark;
+		font-family: $pof-font-1;
+		font-size: 10px;
+		margin-top: 16px;
+		text-align: center;
+
+		.pof-link{
+			cursor: pointer;
+			padding: 8px;
+
+			&:active, &:hover{
+				color: $pof-font-color-light;
+			}
+		}
 	}
 }
 
+.pof-font-1{
+	font-family: $pof-font-1;
+}
+
+.pof-font-2{
+	font-family: $pof-font-2;
+}

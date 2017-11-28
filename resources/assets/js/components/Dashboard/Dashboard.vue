@@ -1,11 +1,11 @@
 <template>
     <div class="news-main">
     	<transition name="fade">
-	    	<div v-if="showNews" class="pof-content-wrapper content-wrapper flex-full">
+	    	<div v-if="showDashboard" class="pof-content-wrapper content-wrapper flex-full">
 	    		<div class="pof-mask"></div>
 	    		<div class="pof-content">
-		    		<div class="pof-header text">News</div>
-		    		<div class="pof-text text text-center"> If you're reading this, I appreciate your interest in the project very much.</div>
+		    		<div class="pof-header text">Hello, </div>
+		    		<div class="pof-text text text-center"> </div>
 		    	</div>
 	    	</div>
 	    </transition>
@@ -22,13 +22,13 @@
     			return this.$store.getters.isLoading;
     		},
 
-            showNews : function (){
-                return this.$store.getters.showNews;
+            showDashboard : function (){
+                return this.$store.getters.showDashboard;
             }
     	},
 
         mounted() {
-            console.log('News mounted.')
+            console.log('Dashboard mounted.')
         }
 
 

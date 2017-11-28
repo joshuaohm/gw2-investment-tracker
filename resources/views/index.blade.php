@@ -14,6 +14,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+    <script type="text/javascript">
+        var isLogged = {{ json_encode($isLogged) }};
+    </script>
 </head>
 <body>
     <div id="app">
