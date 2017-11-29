@@ -55,6 +55,9 @@ const store = new Vuex.Store({
 		SHOW_DASHBOARD(state){
 			state.show.dashboard = true;
 		},
+		SHOW_FORGOT(state){
+			state.show.forgot = true;
+		},
 		SHOW_INTRO(state){
 			state.show.intro = true;
 		},
@@ -89,6 +92,9 @@ const store = new Vuex.Store({
 		},
 		showDashboard(context){
 			context.commit('SHOW_DASHBOARD');
+		},
+		showForgot(context){
+			context.commit('SHOW_FORGOT');
 		},
 		showIntro(context){
 			context.commit('SHOW_INTRO');
@@ -126,6 +132,10 @@ const store = new Vuex.Store({
 
 		showDashboard : state => {
 			return state.show.dashboard;
+		},
+
+		showForgot : state => {
+			return state.show.forgot;
 		},
 
 		showIntro : state => {

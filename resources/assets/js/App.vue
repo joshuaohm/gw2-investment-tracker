@@ -2,7 +2,6 @@
     <div class="app-main">
         <navBar />
         <index />
-        <foot />
     </div>
 </template>
 

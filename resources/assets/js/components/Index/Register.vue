@@ -25,8 +25,8 @@
 			    			<input type="submit">
 			    		</div>
 			    		<div class="pof-links">
-			    			<div class="pof-link" v-on:click="loginClick">Log In</div>
-			    			<div class="pof-link">Forgot Password?</div>
+			    			<div class="pof-link" v-on:click="loginClick" >Log In</div>
+			    			<div class="pof-link" v-on:click="forgotClick" >Forgot Password?</div>
 			    		</div>
 			    	</form>
 		    	</div>
@@ -46,6 +46,10 @@
 
     		showDashboard : function (){
     			return this.$store.getters.showDashboard;
+    		},
+
+    		showForgot : function (){
+    			return this.$store.getters.showForgot;
     		},
 
     		showLogin : function (){
@@ -78,6 +82,19 @@
 
     				self.errors = self.errors + ' ' + newErrors[key];
     			};
+    		},
+
+    		forgotClick : function (){
+    			var self = this;
+
+                if(!self.showForgot){
+
+                    self.$store.dispatch('hideAll');
+
+                    setTimeout(function (){
+                        self.$store.dispatch('showForgot');
+                    },self.menuAnimationTimer, self);
+                }
     		},
 
     		loginClick : function (){
